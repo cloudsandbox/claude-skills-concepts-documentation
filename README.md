@@ -22,10 +22,28 @@ can read them in a single pass.
 
 Each developer runs:
 
+**macOS / Linux:**
+
 ```bash
 git clone https://github.com/cloudsandbox/claude-skills-concepts-documentation.git /tmp/concept-docs
 cp -r /tmp/concept-docs/skill ~/.claude/skills/concept-docs
 rm -rf /tmp/concept-docs
+```
+
+**Windows (PowerShell):**
+
+```powershell
+git clone https://github.com/cloudsandbox/claude-skills-concepts-documentation.git $env:TEMP\concept-docs
+Copy-Item -Recurse $env:TEMP\concept-docs\skill $env:USERPROFILE\.claude\skills\concept-docs
+Remove-Item -Recurse -Force $env:TEMP\concept-docs
+```
+
+**Windows (Command Prompt):**
+
+```cmd
+git clone https://github.com/cloudsandbox/claude-skills-concepts-documentation.git %TEMP%\concept-docs
+xcopy /E /I %TEMP%\concept-docs\skill %USERPROFILE%\.claude\skills\concept-docs
+rmdir /S /Q %TEMP%\concept-docs
 ```
 
 Available across all their projects. Invoke by saying "bootstrap concept docs" in any
@@ -34,6 +52,8 @@ conversation.
 ### Method 2: Project-level skill (shared via git)
 
 One person adds it to the project repo:
+
+**macOS / Linux:**
 
 ```bash
 git clone https://github.com/cloudsandbox/claude-skills-concepts-documentation.git /tmp/concept-docs
@@ -44,14 +64,34 @@ git commit -m "chore: add concept-docs skill"
 git push
 ```
 
+**Windows (PowerShell):**
+
+```powershell
+git clone https://github.com/cloudsandbox/claude-skills-concepts-documentation.git $env:TEMP\concept-docs
+Copy-Item -Recurse $env:TEMP\concept-docs\skill .claude\skills\concept-docs
+Remove-Item -Recurse -Force $env:TEMP\concept-docs
+git add .claude/skills/concept-docs
+git commit -m "chore: add concept-docs skill"
+git push
+```
+
 Everyone who pulls the repo gets the skill automatically. No individual setup needed.
 **This is the recommended approach for teams.**
 
 ### Method 3: Git submodule (stays updated)
 
+**macOS / Linux:**
+
 ```bash
 git submodule add https://github.com/cloudsandbox/claude-skills-concepts-documentation.git .claude/skills/concept-docs-repo
 ln -s concept-docs-repo/skill .claude/skills/concept-docs
+```
+
+**Windows (PowerShell):**
+
+```powershell
+git submodule add https://github.com/cloudsandbox/claude-skills-concepts-documentation.git .claude/skills/concept-docs-repo
+New-Item -ItemType Junction -Path .claude\skills\concept-docs -Target .claude\skills\concept-docs-repo\skill
 ```
 
 The team pulls updates with:
