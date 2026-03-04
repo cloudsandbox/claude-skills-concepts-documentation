@@ -107,6 +107,89 @@ This keeps the skill in sync with upstream changes without manually copying file
 Read the files directly. The templates and workflows are human-readable markdown -- no AI
 agent required. Start with `skill/SKILL.md` and follow the links.
 
+## Example Prompts
+
+Here are prompts you can use at each stage of working with the skill.
+
+### Bootstrapping (first time setup)
+
+```
+Bootstrap concept docs for this project
+```
+
+```
+Bootstrap concept docs in quick mode
+```
+
+```
+Set up concept documentation -- this is a multi-tenant SaaS platform with RBAC
+```
+
+```
+I want to create structured docs for my API. Bootstrap concept docs.
+```
+
+### Adding new concepts
+
+```
+Add a new concept for "payments" -- it owns Invoice, Transaction, and Refund entities
+```
+
+```
+Create a concept for the notification system
+```
+
+```
+New concept: authentication. It handles login, sessions, and OAuth flows.
+```
+
+### Auditing and compliance
+
+```
+Audit concepts
+```
+
+```
+Check concept compliance -- I want to see if all cross-references are valid
+```
+
+```
+I just edited docs/concepts/users/data-models.md -- run the self-audit
+```
+
+### Design validation
+
+```
+Validate this design against concepts -- I'm adding a new endpoint that bypasses
+the permission check for public resources
+```
+
+```
+Brainstorm with concept awareness -- I want to explore adding a caching layer
+```
+
+```
+Conduct a full platform concepts audit
+```
+
+### Day-to-day usage
+
+```
+What does the permissions concept say about field-level security?
+```
+
+```
+Summarize the groups concept for a new developer
+```
+
+```
+Is there a concept for webhooks?
+```
+
+```
+Does my auth guard implementation follow the security-layers concept rules?
+```
+
 ## Modes
 
 ### Deep mode (default)
