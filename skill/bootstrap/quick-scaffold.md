@@ -119,7 +119,7 @@ Run after every concept file creation or edit.
 
 ## Step 4 — Generate CLAUDE.md Section
 
-Read `skill/claude-md-generator.md` and follow its instructions to append the
+Read `bootstrap/claude-md-generator.md` and follow its instructions to append the
 concept-docs section to the project's `CLAUDE.md`.
 
 If `claude-md-generator.md` does not exist yet, tell the user:
