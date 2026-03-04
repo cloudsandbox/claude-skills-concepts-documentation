@@ -18,27 +18,51 @@ can read them in a single pass.
 
 ## Installation
 
-### Method 1: Claude Code -- Personal skill
+### Method 1: Personal skill (per developer)
+
+Each developer runs:
 
 ```bash
-git clone <repo-url> /tmp/concept-docs
+git clone https://github.com/cloudsandbox/claude-skills-concepts-documentation.git /tmp/concept-docs
 cp -r /tmp/concept-docs/skill ~/.claude/skills/concept-docs
+rm -rf /tmp/concept-docs
 ```
 
-Available across all your projects. Invoke with:
+Available across all their projects. Invoke by saying "bootstrap concept docs" in any
+conversation.
 
-> "Use concept-docs to bootstrap this project."
+### Method 2: Project-level skill (shared via git)
 
-### Method 2: Claude Code -- Project-level skill (shared with team)
+One person adds it to the project repo:
 
 ```bash
-git clone <repo-url> /tmp/concept-docs
+git clone https://github.com/cloudsandbox/claude-skills-concepts-documentation.git /tmp/concept-docs
 cp -r /tmp/concept-docs/skill .claude/skills/concept-docs
+rm -rf /tmp/concept-docs
+git add .claude/skills/concept-docs
+git commit -m "chore: add concept-docs skill"
+git push
 ```
 
-Commit `.claude/skills/concept-docs/` to git. Everyone on the team gets it automatically.
+Everyone who pulls the repo gets the skill automatically. No individual setup needed.
+**This is the recommended approach for teams.**
 
-### Method 3: Manual reference
+### Method 3: Git submodule (stays updated)
+
+```bash
+git submodule add https://github.com/cloudsandbox/claude-skills-concepts-documentation.git .claude/skills/concept-docs-repo
+ln -s concept-docs-repo/skill .claude/skills/concept-docs
+```
+
+The team pulls updates with:
+
+```bash
+git submodule update --remote
+```
+
+This keeps the skill in sync with upstream changes without manually copying files.
+
+### Method 4: Manual reference
 
 Read the files directly. The templates and workflows are human-readable markdown -- no AI
 agent required. Start with `skill/SKILL.md` and follow the links.
